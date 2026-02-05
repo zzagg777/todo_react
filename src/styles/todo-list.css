@@ -1,0 +1,50 @@
+
+.todo-list{
+  display: flex;
+  flex-flow: column;
+  gap: 0.8rem;
+}
+.todo-item{
+  position: relative;
+  display: flex;
+  border: 1px solid var(--border-color);
+  border-radius: 0.8rem;
+  padding: 1.2rem;
+  gap: 1rem;
+  align-items: center;
+}
+.todo-item .check-box{}
+.todo-item .check-box input[type=checkbox]{}
+.todo-item .check-box label{
+  position: relative;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  display: block;
+  cursor: pointer;
+}
+.todo-item.done label,
+.todo-item .check-box input[type=checkbox]:checked + label{
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+}
+.todo-item p{
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.todo-item.hide{
+  display: none;
+}
+.todo-item.done{
+  border-color: var(--primary-color);
+  opacity: 0.6;
+}
+.todo-item.done p{
+  text-decoration: line-through;
+}
