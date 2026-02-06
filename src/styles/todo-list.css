@@ -1,4 +1,4 @@
-
+/* list */
 .todo-list{
   display: flex;
   flex-flow: column;
@@ -11,6 +11,8 @@
   font-size: 1.4rem;
   margin: 2rem 0;;
 }
+
+/* item */
 .todo-item{
   position: relative;
   display: flex;
@@ -20,8 +22,6 @@
   gap: 1rem;
   align-items: center;
 }
-.todo-item .check-box{}
-.todo-item .check-box input[type=checkbox]{}
 .todo-item .check-box label{
   position: relative;
   width: 1.8rem;
@@ -38,20 +38,21 @@
   outline: 2px solid #fff;
   outline-offset: -4px;
 }
+.todo-item input[type=text],
 .todo-item p{
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.todo-item.hide{
-  display: none;
+  border: 0;
+  outline: 0;
+  font-size: 1.6rem;
 }
 .todo-item.done{
   border-color: var(--primary-color);
   opacity: 0.6;
 }
+.todo-item.done input[type=text],
 .todo-item.done p{
   text-decoration: line-through;
 }

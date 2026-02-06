@@ -1,0 +1,74 @@
+/* 전체 카드 */
+.timer {
+  padding: 2.4rem;
+  border-radius: 1rem;
+  background: var(--bg-color);
+  text-align: center;
+}
+
+/* 타이틀 */
+.timer__title {
+  margin: 0 0 1.5rem;
+}
+
+/* 숫자 표시 */
+.timer__display {
+  font-size: 4.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.timer__unit {
+  font-size: 1.6rem;
+  margin-left: .5rem;
+  color: #666;
+}
+
+/* 버튼 영역 */
+.timer__buttons {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+/* 공통 버튼 */
+.timer__buttons .btn {
+  min-width: 90px;
+  padding: 10px 0;
+  border-radius: 999px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s;
+}
+
+/* Start 버튼 */
+.btn--start {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(79, 172, 254, 0.4);
+}
+
+.btn--start:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(79, 172, 254, 0.5);
+}
+
+/* Stop 버튼 */
+.btn--stop {
+  background: linear-gradient(135deg, #ff6a6a, #ff3d3d);
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(255, 61, 61, 0.35);
+}
+
+.btn--stop:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(255, 61, 61, 0.45);
+}
+
+/* 버튼 클릭 시 */
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) inset;
+}

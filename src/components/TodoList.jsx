@@ -1,7 +1,9 @@
 import "../styles/todo-list.css";
 
-function TodoList({ todos, setTodos, onToggle, onDelete  }) {
+function TodoList({ todos, setTodos, onToggle, onDelete, tab, onModify  }) {
   if(todos.length === 0){ // Todo가 없을 때
+    if(tab === "ing") return <p className="todo-list__empty">진행중인 할일이 없습니다.</p>
+    if(tab === "done") return <p className="todo-list__empty">완료된 할일이 없습니다.</p>
     return <p className="todo-list__empty">등록된 할일이 없습니다.</p>
   }
 
@@ -14,13 +16,14 @@ function TodoList({ todos, setTodos, onToggle, onDelete  }) {
           setTodos={setTodos}
           onToggle={onToggle}
           onDelete={onDelete}
+          onModify={onModify}
         />
       ))}
     </ul>
   );
 }
 
-function TodoItem({ todos, onToggle, onDelete}) {
+function TodoItem({ todos, onToggle, onDelete, onModify}) {
   const { id, text, done } = todos;
 
   return (
@@ -38,7 +41,8 @@ function TodoItem({ todos, onToggle, onDelete}) {
           className={`todo-${done ? "done" : ""}`}
         ></label>
       </span>
-      <p>{text}</p>
+      {/* <p>{text}</p> */}
+      <input type="text" value={text} disabled={done} onChange={(e) => onModify(id, e.target.value)} />
       <button className="todo-delete material-symbols-outlined" onClick={() => onDelete(id)}>close</button>
     </li>
   );

@@ -1,12 +1,14 @@
 import { useState, useRef } from "react";
 import "../styles/todo-form.css";
+import { debounce } from "lodash";
+
 
 function TodoForm({onAdd}) {
   const [text, setText] = useState("");
   const [msg, setMsg] = useState("");
   const inputRef = useRef(null);
   
-  
+
   const handleFocus = () => { // 포커스
     inputRef.current?.focus();
   }
