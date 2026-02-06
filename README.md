@@ -1,4 +1,4 @@
-## todo-react
+# todo-react
 Vite + React로 만든 간단한 Todo 앱입니다.  
 할 일 추가/완료 토글/삭제/필터(전체/진행/완료) 등의 기능을 포함합니다.
 
