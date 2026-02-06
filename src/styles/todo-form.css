@@ -15,10 +15,18 @@
   padding: 1.2rem;
   font-size: inherit;
 }
+.todo-form input.error::placeholder{
+  color: var(--secondary-color);
+}
 .todo-form button{
   min-width: 6rem;
   height: 100%;
   background-color: var(--primary-color);
   border-color: var(--primary-color);
   color: var(--white-color);
+}
+.error-msg{
+  margin-top: 0.8rem;
+  color: var(--secondary-color);
+  font-size: 1.2rem;
 }

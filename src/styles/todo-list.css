@@ -4,6 +4,13 @@
   flex-flow: column;
   gap: 0.8rem;
 }
+.todo-list__empty{
+  text-align: center;
+  color: var(--text-color);
+  opacity: 0.6;
+  font-size: 1.4rem;
+  margin: 2rem 0;;
+}
 .todo-item{
   position: relative;
   display: flex;
