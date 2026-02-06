@@ -1,20 +1,38 @@
-<<<<<<< HEAD
-# React + Vite
+# todo-react
+Vite + React로 만든 간단한 Todo 앱입니다.  
+할 일 추가/완료 토글/삭제/필터(전체/진행/완료) 등의 기능을 포함합니다.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 실행 방법
+# 1) 의존성 설치
+npm install
 
-Currently, two official plugins are available:
+# 2) 개발 서버 실행
+npm run dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 컴포넌트 구조
+App.jsx가 Todo 앱의 루트 컴포넌트이며, 전체 레이아웃을 조립하고 핵심 상태(todos 등)를 관리합니다.
+Header는 앱 상단의 타이틀/소개 등 공통 UI를 담당합니다.
+TodoForm은 입력창과 “추가” 버튼을 렌더링하며, 사용자가 입력한 텍스트를 검증(유효성 검사)한 뒤 부모(App)에게 “추가 요청”을 보냅니다.
+TodoList는 현재 보여줄 Todo 목록을 렌더링하고, 각 Todo 항목(TodoItem)의 토글/삭제 이벤트를 부모에서 받은 함수로 연결합니다.
+TodoStats는 전체/진행/완료 개수 표시 및 탭(필터) UI를 담당하며, 사용자가 탭을 클릭하면 필터 상태를 변경하도록 부모(App)에 전달합니다.
 
-## React Compiler
+## 상태(state) 관리 방식
+# 1) App.jsx
+todos: Todo 원본 데이터, 추가/토글/삭제/수정 같은 데이터 변경은 여기에서 수행합니다.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+tab: 현재 선택된 탭 상태(예: all/ing/done).
+탭이 바뀌면 todos를 직접 덮어쓰지 않고, 화면에 보여줄 목록만 필터링하여 내려줍니다.
 
-## Expanding the ESLint configuration
+# 2) TodoForm.jsx
+text: 입력창 값
+error: 유효성 검사 실패 시 메시지
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# todo_react
->>>>>>> 085324f92be73840daf0cc54c7cad8eb7ee4b649
+# 3) utils/storage.js
+로컬스토리지는 유틸로 분리하여, todos 변경 시 저장/로드를 담당하도록 구성합니다.
+
+## 불변성 업데이트
+React에서 state는 직접 수정하면 안 되고, 새로운 배열/객체를 만들어서 업데이트해야 합니다.
+특정 id의 Todo 완료(done) 상태를 토글하는 경우,
+prev 배열을 그대로 바꾸지 않고, map()으로 새 배열을 만듭니다.
+바뀌는 항목만 { ...todo, done: !todo.done }처럼 새 객체로 복사 후 변경합니다.
+이렇게 해야 React가 “상태가 바뀌었다”고 정확히 인지하고 리렌더링이 안정적으로 동작합니다
